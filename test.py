@@ -43,11 +43,11 @@ if __name__ == "__main__":
     plt.savefig(output_dir / "histogram.png")
     plt.close()
 
-    # Crea una figura per visualizzare tutti i risultati (4 righe, 3 colonne)
-    plt.figure(figsize=(20, 20))
+    # Crea una figura per visualizzare tutti i risultati (5 righe, 3 colonne)
+    plt.figure(figsize=(20, 25))  # Increased height to accommodate the extra row
 
     # Mostra l'immagine originale
-    plt.subplot(4, 3, 1)
+    plt.subplot(5, 3, 1)  # Changed from 4,3,1 to 5,3,1
     plt.imshow(img_rgb)
     plt.title('Originale')
     plt.axis('off')
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     filtered_images["gaussian"] = gaussian
     gaussian_rgb = cv2.cvtColor(gaussian, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["gaussian"] = gaussian_rgb
-    plt.subplot(4, 3, 2)
+    plt.subplot(5, 3, 2)  # Changed from 4,3,2 to 5,3,2
     plt.imshow(gaussian_rgb)
     plt.title('Filtro Gaussiano (7x7)')
     plt.axis('off')
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     filtered_images["median"] = median
     median_rgb = cv2.cvtColor(median, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["median"] = median_rgb
-    plt.subplot(4, 3, 3)
+    plt.subplot(5, 3, 3)  # Changed from 4,3,3 to 5,3,3
     plt.imshow(median_rgb)
     plt.title('Filtro Mediano (7)')
     plt.axis('off')
@@ -81,7 +81,7 @@ if __name__ == "__main__":
     filtered_images["bilateral"] = bilateral
     bilateral_rgb = cv2.cvtColor(bilateral, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["bilateral"] = bilateral_rgb
-    plt.subplot(4, 3, 4)
+    plt.subplot(5, 3, 4)  # Changed from 4,3,4 to 5,3,4
     plt.imshow(bilateral_rgb)
     plt.title('Filtro Bilaterale (9,100,100)')
     plt.axis('off')
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         filtered_images["nlm"] = nlm
         nlm_rgb = cv2.cvtColor(nlm, cv2.COLOR_BGR2RGB)
         filtered_images_rgb["nlm"] = nlm_rgb
-        plt.subplot(4, 3, 5)
+        plt.subplot(5, 3, 5)  # Changed from 4,3,5 to 5,3,5
         plt.imshow(nlm_rgb)
         plt.title('NL Means (h=15)')
         plt.axis('off')
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     tv_bgr = cv2.cvtColor(tv_ubyte, cv2.COLOR_RGB2BGR)
     filtered_images["tv"] = tv_bgr
     filtered_images_rgb["tv"] = tv
-    plt.subplot(4, 3, 6)
+    plt.subplot(5, 3, 6)  # Changed from 4,3,6 to 5,3,6
     plt.imshow(tv)
     plt.title('TV Denoising (w=0.2)')
     plt.axis('off')
@@ -136,7 +136,7 @@ if __name__ == "__main__":
         wavelet_bgr = cv2.cvtColor(wavelet_ubyte, cv2.COLOR_RGB2BGR)
         filtered_images["wavelet"] = wavelet_bgr
         filtered_images_rgb["wavelet"] = wavelet
-        plt.subplot(4, 3, 7)
+        plt.subplot(5, 3, 7)  # Changed from 4,3,7 to 5,3,7
         plt.imshow(wavelet)
         plt.title('Wavelet Denoising (BayesShrink)')
         plt.axis('off')
@@ -148,7 +148,7 @@ if __name__ == "__main__":
     filtered_images["bilateral_strong"] = bilateral_strong
     bilateral_strong_rgb = cv2.cvtColor(bilateral_strong, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["bilateral_strong"] = bilateral_strong_rgb
-    plt.subplot(4, 3, 8)
+    plt.subplot(5, 3, 8)  # Changed from 4,3,8 to 5,3,8
     plt.imshow(bilateral_strong_rgb)
     plt.title('Bilateral Strong (25,175,175)')
     plt.axis('off')
@@ -158,7 +158,7 @@ if __name__ == "__main__":
     filtered_images["combo"] = combo
     combo_rgb = cv2.cvtColor(combo, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["combo"] = combo_rgb
-    plt.subplot(4, 3, 9)
+    plt.subplot(5, 3, 9)  # Changed from 4,3,9 to 5,3,9
     plt.imshow(combo_rgb)
     plt.title('Combinazione (Median + Bilateral)')
     plt.axis('off')
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     filtered_images["wiener"] = wiener_filtered
     wiener_rgb = cv2.cvtColor(wiener_filtered, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["wiener"] = wiener_rgb
-    plt.subplot(4, 3, 10)
+    plt.subplot(5, 3, 10)  # Changed from 4,3,10 to 5,3,10
     plt.imshow(wiener_rgb)
     plt.title('Filtro di Wiener (5x5)')
     plt.axis('off')
@@ -186,7 +186,7 @@ if __name__ == "__main__":
         # Convertiamo in BGR per salvare con lo stesso formato
         adaptive_color = cv2.cvtColor(adaptive, cv2.COLOR_GRAY2BGR)
         filtered_images["adaptive"] = adaptive_color
-        plt.subplot(4, 3, 11)
+        plt.subplot(5, 3, 11)  # Changed from 4,3,11 to 5,3,11
         plt.imshow(adaptive, cmap='gray')
         plt.title('Adaptive Threshold')
         plt.axis('off')
@@ -198,12 +198,39 @@ if __name__ == "__main__":
     filtered_images["wiener_bilateral"] = wiener_bilateral
     wiener_bilateral_rgb = cv2.cvtColor(wiener_bilateral, cv2.COLOR_BGR2RGB)
     filtered_images_rgb["wiener_bilateral"] = wiener_bilateral_rgb
-    plt.subplot(4, 3, 12)
+    plt.subplot(5, 3, 12)  # Changed from 4,3,12 to 5,3,12
     plt.imshow(wiener_bilateral_rgb)
     plt.title('Wiener + Bilateral')
     plt.axis('off')
-
-    # Regola il layout e mostra la figura
+    
+    # Metodo 12: Filtro Mean (Box filter)
+    mean_filter = cv2.blur(img, (7, 7))  # Kernel 7x7 per un effetto più evidente
+    filtered_images["mean"] = mean_filter
+    mean_filter_rgb = cv2.cvtColor(mean_filter, cv2.COLOR_BGR2RGB)
+    filtered_images_rgb["mean"] = mean_filter_rgb
+    plt.subplot(5, 3, 13)  # Added to the 5th row, first position
+    plt.imshow(mean_filter_rgb)
+    plt.title('Filtro Mean (7x7)')
+    plt.axis('off')
+    
+    # Create a separate figure for mean filter comparison
+    plt.figure(figsize=(10, 5))
+    plt.subplot(1, 2, 1)
+    plt.imshow(img_rgb)
+    plt.title('Originale')
+    plt.axis('off')
+    
+    plt.subplot(1, 2, 2)
+    plt.imshow(mean_filter_rgb)
+    plt.title('Filtro Mean (7x7)')
+    plt.axis('off')
+    
+    plt.tight_layout()
+    plt.savefig(output_dir / "mean_filter_comparison.png", dpi=300)
+    plt.close()  # Close only the mean filter comparison figure
+    
+    # Go back to the main figure and save it
+    plt.figure(1)  # Select the first figure (main comparison grid)
     plt.tight_layout()
     plt.savefig(output_dir / "comparison.png", dpi=300)  # Aumenta DPI per migliore qualità
     
